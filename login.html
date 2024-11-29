@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main_login">
+        <div class="login_nav">
+            <button><a href="./index.html">Back</a></button>
+            <h1>Hats Paradise</h1>
+            <h1>Login</h1>
+        </div>
+        <div class="login_form">
+            <form onsubmit="loginFunc(event)">
+                <div class="login_option">
+                    <input type="email" id="login_email" placeholder="Enter Email">
+                </div>
+                <div class="login_option">
+                    <input type="password" id="login_pass" placeholder="Enter Password">
+                </div>
+                <div class="login_option_two">
+                    <p>Employment Status</p>
+                    <input type="radio" name="login_status" id="login_employee_status" value="login_emplpoyee">
+                    <label for="login_employee_status">Employee</label>
+                    <input type="radio" name="login_status" id="login_customer_status" value="login_manager">
+                    <label for="login_customer_status">Customer</label>
+                </div>
+                <div class="login_option">
+                    <button onclick="loginFunc(event)">Login</button>
+                </div>
+                <div class="login_option">
+                    <p>Donot have an Account?<a href="./index.html">Signin here!</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

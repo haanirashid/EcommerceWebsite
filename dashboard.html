@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee's Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main_dash">
+        <div class="nav_dash">
+            <h1>Hats Paradise</h1>
+        </div>
+        <div class="welcome_dash" id="dash_welcome_target">
+            <h2>Welcome, Hani Rashid</h2>
+        </div>
+        <div class="sub_dash">
+            <div class="left">
+                <div class="left_div"><button>Sales</button></div>
+                <div class="left_div"><button onclick="visitWebsite()">Visit Website</button></div>
+                <div class="left_div"><button onclick="signOutFunc()">Sign Out</button></div>
+            </div>
+            <div class="right">
+                <table id="dash_target">
+                    <tr>
+                        <th>Serial Number</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>View Profile</th>
+                    </tr>
+                    <!-- <tr>
+                        <td>01</td>
+                        <td>Hani Rashid</td>
+                        <td>hani@gmail.com</td>
+                        <td>Employee</td>
+                        <td><button>View Profile</button></td>
+                    </tr> -->
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="app.js"></script> -->
+    <script>
+        var getLoggedEmployeeName = localStorage.getItem("loggedEmployeeName");
+        var getLoggedEmployeeStatus = localStorage.getItem("loggedEmployeeStatus");
+
+        var getEmployeeArr = JSON.parse(localStorage.getItem("employeeArr"));
+        var getManagerArr = JSON.parse(localStorage.getItem("managerArr"));
+        var getPartnerArr = JSON.parse(localStorage.getItem("partnerArr"));
+
+        var dashWelcomeTarget = document.getElementById("dash_welcome_target");
+        dashWelcomeTarget.innerHTML =
+            `
+            <h2>Welcome, ${getLoggedEmployeeName}</h2>
+            `;
+
+        var dashMainTarget = document.getElementById("dash_target");
+        if (getLoggedEmployeeStatus === "employee") {
+            for (var i = 0; i < getEmployeeArr.length; i++) {
+                dashMainTarget.innerHTML +=
+                    `
+                 <tr>
+                        <td>${getEmployeeArr[i].id}</td>
+                        <td>${getEmployeeArr[i].fullName}</td>
+                        <td>${getEmployeeArr[i].email}</td>
+                        <td>Employee</td>
+                        <td><button>View Profile</button></td>
+                    </tr>
+                `
+            }
+        }
+        else if (getLoggedEmployeeStatus === "manager") {
+            for (var i = 0; i < getManagerArr.length; i++) {
+                dashMainTarget.innerHTML +=
+                    `
+                     <tr>
+                        <td>${getManagerArr[i].id}</td>
+                        <td>${getManagerArr[i].fullName}</td>
+                        <td>${getManagerArr[i].email}</td>
+                        <td>Manager</td>
+                        <td><button>View Profile</button></td>
+                    </tr>
+                    `
+            }
+            for (var i = 0; i < getEmployeeArr.length; i++) {
+                dashMainTarget.innerHTML +=
+                    `
+                 <tr>
+                        <td>${getEmployeeArr[i].id}</td>
+                        <td>${getEmployeeArr[i].fullName}</td>
+                        <td>${getEmployeeArr[i].email}</td>
+                        <td>Employee</td>
+                        <td><button>View Profile</button></td>
+                </tr>
+                `
+            }
+        }
+        else if (getLoggedEmployeeStatus === "partner") {
+            for (var i = 0; i < getPartnerArr.length; i++) {
+                dashMainTarget.innerHTML +=
+                    `
+                <tr>
+                        <td>${getPartnerArr[i].id}</td>
+                        <td>${getPartnerArr[i].fullName}</td>
+                        <td>${getPartnerArr[i].email}</td>
+                        <td>Partner</td>
+                        <td><button>View Profile</button></td>
+                </tr>
+                `
+            }
+            for (var i = 0; i < getManagerArr.length; i++) {
+                dashMainTarget.innerHTML +=
+                    `
+                     <tr>
+                        <td>${getManagerArr[i].id}</td>
+                        <td>${getManagerArr[i].fullName}</td>
+                        <td>${getManagerArr[i].email}</td>
+                        <td>Manager</td>
+                        <td><button>View Profile</button></td>
+                    </tr>
+                    `
+            }
+            for (var i = 0; i < getEmployeeArr.length; i++) {
+                dashMainTarget.innerHTML +=
+                    `
+                 <tr>
+                        <td>${getEmployeeArr[i].id}</td>
+                        <td>${getEmployeeArr[i].fullName}</td>
+                        <td>${getEmployeeArr[i].email}</td>
+                        <td>Employee</td>
+                        <td><button>View Profile</button></td>
+                </tr>
+                `
+            }
+        }
+
+        const signOutFunc = () => {
+            localStorage.clear();
+            window.location.href = "./index.html";
+        }
+
+        const visitWebsite = ()=>{
+            window.location.href = "./website.html";
+        }
+
+    </script>
+</body>
+
+</html>

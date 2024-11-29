@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CustomerSignin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main_signin">
+        <div class="signin_nav">
+            <button><a href="./index.html">Back</a></button>
+            <h1>Hats Paradise</h1>
+            <h1>Customer's Signin</h1>
+        </div>
+        <div class="signin_form">
+            <form onsubmit="customerSign(event)">
+                <div class="sign_option">
+                    <input type="name" id="customer_sign_name" placeholder="Enter Full Name">
+                </div>
+                <div class="sign_option">
+                    <input type="email" id="customer_sign_email" placeholder="Enter Email">
+                </div>
+                <div class="sign_option">
+                    <input type="password" id="customer_sign_pass" placeholder="Enter Password">
+                </div>
+                <div class="sign_option">
+                    <button onclick="customerSign(event)">Signin</button>
+                </div>
+                <div class="sign_option">
+                    <p>Already have an account? <a href="./login.html">Login here!</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

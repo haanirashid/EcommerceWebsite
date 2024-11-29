@@ -1,0 +1,616 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Select Section Css */
+
+#body_select {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.nav_select {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FBF8EF;
+}
+
+.nav_select h1 {
+    font-size: 38px;
+    color: #F96E2A;
+    text-decoration: underline #C9E6F0;
+}
+
+.main_select {
+    width: 100%;
+    flex-grow: 1;
+    background-color: #78B3CE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_select .select {
+    width: 50%;
+    height: 400px;
+    border: 4px solid #F96E2A;
+    border-radius: 12px;
+    background-color: #FBF8EF;
+}
+
+.select .visit {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.select .visit h2 {
+    font-size: 32px;
+    font-weight: 100;
+    color: #78B3CE;
+    text-decoration: underline #F96E2A;
+}
+
+.select .option {
+    width: 100%;
+    height: 300px;
+}
+
+.select .option .sub_option {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub_option .radio_style {
+    width: 40px;
+    height: 20px;
+}
+
+.sub_option label {
+    font-size: 24px;
+    font-weight: 400;
+    color: #F96E2A;
+}
+
+.sub_option button {
+    width: 200px;
+    height: 40px;
+    border-radius: 15px;
+    background-color: #C9E6F0;
+    border: 2px solid #F96E2A;
+    font-size: 16px;
+    font-weight: 800;
+    color: #F96E2A;
+}
+
+/* Select Section Css End */
+
+/* Signin Section Css Start */
+/* Login Section Css Start */
+
+.main_signin,
+.main_login {
+    width: 100%;
+    height: auto;
+}
+
+.main_signin .signin_nav,
+.main_login .login_nav {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #FBF8EF;
+}
+
+.main_signin .signin_nav button,
+.main_login .login_nav button {
+    width: 150px;
+    height: 40px;
+    background-color: #C9E6F0;
+    border: 2px solid #F96E2A;
+    border-radius: 12px;
+}
+
+.main_signin .signin_nav button a,
+.main_login .login_nav button a {
+    text-decoration: none;
+    color: #F96E2A;
+    font-size: 16px;
+}
+
+.main_signin .signin_nav h1,
+.main_login .login_nav h1 {
+    font-size: 32px;
+    color: #F96E2A;
+    text-decoration: underline #C9E6F0;
+}
+
+.main_signin .signin_form,
+.main_login .login_form {
+    width: 100%;
+    min-height: calc(100vh - 100px);
+    background-color: #78B3CE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin_form form,
+.login_form form {
+    width: 50%;
+    height: auto;
+    border: 4px solid #FBF8EF;
+    border-radius: 12px;
+    background-color: #C9E6F0;
+}
+
+.signin_form form .sign_option,
+.login_form form .login_option {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin_form form .sign_option input,
+.login_form form .login_option input {
+    width: 70%;
+    height: 45px;
+    border: 2px solid #F96E2A;
+}
+
+.signin_form form .sign_option input:placeholder-shown,
+.login_form form .login_option input:placeholder-shown {
+    text-align: center;
+}
+
+.signin_form form .sign_option_two,
+.login_form form .login_option_two {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.signin_form form .sign_option_two p,
+.login_form form .login_option_two p {
+    width: 100%;
+    font-size: 18px;
+    color: gray;
+}
+
+.signin_form form .sign_option_two input,
+.login_form form .login_option_two input {
+    width: 40px;
+    height: 20px;
+}
+
+.signin_form form .sign_option_two label,
+.login_form form .login_option_two label {
+    font-size: 16px;
+    color: black;
+}
+
+.signin_form form .sign_option button,
+.login_form form .login_option button {
+    width: 200px;
+    height: 40px;
+    background-color: #78B3CE;
+    border: 2px solid #FBF8EF;
+    border-radius: 12px;
+    font-size: 18px;
+    color: whitesmoke;
+}
+
+.signin_form form .sign_option p,
+.login_form form .login_option p {
+    font-size: 18px;
+}
+
+.signin_form form .sign_option p a,
+.login_form form .login_option p a {
+    text-decoration: underline black;
+    color: black;
+    font-size: 18px;
+}
+
+
+/* Signin Section Css End */
+/* Login Section Css End */
+
+
+/* Dashboard Section Css Start  */
+.main_dash {
+    width: 100%;
+    height: auto;
+}
+
+.nav_dash {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FBF8EF;
+    border-bottom: 2px solid #78B3CE;
+}
+
+.nav_dash h1 {
+    font-size: 38px;
+    color: #F96E2A;
+    text-decoration: underline #C9E6F0;
+}
+
+.welcome_dash {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FBF8EF;
+    border-bottom: 2px solid #F96E2A;
+}
+
+.welcome_dash h2 {
+    font-size: 38px;
+    color: #F96E2A;
+    text-decoration: underline #C9E6F0;
+}
+
+.sub_dash {
+    width: 100%;
+    min-height: calc(100vh - 140px);
+    display: flex;
+}
+
+.sub_dash .left {
+    width: 20%;
+    height: inherit;
+    background-color: #C9E6F0;
+}
+
+.sub_dash .left .left_div {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub_dash .left .left_div button {
+    width: 250px;
+    height: 50px;
+    border: 2px solid #F96E2A;
+    border-radius: 12px;
+    background-color: #FBF8EF;
+    font-size: 16px;
+    color: #F96E2A;
+}
+
+.sub_dash .right {
+    width: 80%;
+    height: inherit;
+    background-color: #78B3CE;
+}
+
+.sub_dash .right table {
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+
+}
+
+.sub_dash .right table tr {
+    height: 60px;
+}
+
+.sub_dash .right table th {
+    width: 20%;
+    border-bottom: 2px solid #FBF8EF;
+    font-size: 22px;
+    font-weight: 800;
+    color: #222831;
+}
+
+.sub_dash .right table td {
+    width: 20%;
+    border-bottom: 2px solid #FBF8EF;
+    font-size: 18px;
+    font-weight: 800;
+    color: #FBF8EF;
+    text-align: center;
+}
+
+.sub_dash .right table td button {
+    width: 60%;
+    height: 35px;
+    font-size: 14px;
+    color: #F96E2A;
+    background-color: #C9E6F0;
+    border: 2px solid #F96E2A;
+    border-radius: 12px;
+}
+
+/* Dashboard Css End */
+
+/* HomePage Css Start */
+
+.main_web {
+    width: 100%;
+    height: auto;
+}
+
+.nav_web {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FBF8EF;
+}
+
+.nav_web .title {
+    width: 25%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav_web .title h1 {
+    font-size: 32px;
+    color: #F96E2A;
+    text-decoration: underline #C9E6F0;
+}
+
+.nav_web .list {
+    width: 40%;
+    height: 100px;
+}
+
+.nav_web .list ul {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style: none;
+}
+
+.nav_web .list ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #F96E2A;
+}
+
+.nav_web .list ul li a i {
+    font-size: 22px;
+}
+
+.nav_web .list ul li a:hover {
+    text-decoration: underline #78B3CE;
+}
+
+/* Website Cover Css End */
+
+/* Website Cover Css Start */
+
+.cover_web {
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+}
+
+.cover_web img {
+    width: 100%;
+    height: 550px;
+    background-size: cover;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.9;
+}
+
+.cover_web .cover_text {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.cover_web .cover_text h1 {
+    color: whitesmoke;
+    font-size: 32px;
+}
+
+/* Cover CSS End */
+
+/* Small Cover CSS Start */
+
+.small_card_web {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #C9E6F0;
+}
+
+.small_card_web .small_card {
+    width: 25%;
+    height: 100px;
+    background-color: #FBF8EF;
+    border: 4px solid #F96E2A;
+    border-radius: 15PX;
+    display: flex;
+}
+
+.small_card_web .small_card .prtone {
+    width: 25%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.small_card_web .small_card .prtone i {
+    font-size: 32px;
+}
+
+.small_card_web .small_card .prttwo {
+    width: 75%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.small_card_web .small_card .prttwo h2 {
+    font-size: 24px;
+    font-weight: 100;
+}
+
+/* Small Cover Css End */
+
+/* Cards Css Start */
+
+.card_web {
+    width: 100%;
+    height: 700px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #FBF8EF;
+}
+
+.card_web .main_card {
+    width: 28%;
+    height: 480px;
+    border: 2px solid red;
+    background-color: #C9E6F0;
+    border: 5px solid #78B3CE;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 15px 15px 15px 15px;
+}
+
+.card_web .main_card .card_img {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-bottom: 2px solid #F96E2A;
+}
+
+.card_web .main_card .card_img img {
+    width: 100%;
+    height: 200px;
+    background-size: cover
+}
+
+.card_web .main_card .card_title {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.card_web .main_card .card_title h2 {
+    font-size: 28px;
+    font-weight: 100;
+    color: #222831;
+}
+
+.card_web .main_card .card_parra {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_web .main_card .card_parra p {
+    width: 80%;
+    text-align: justify;
+    font-size: 16px;
+    color: #222831;
+}
+
+.card_web .main_card .card_price {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 10px 10px 10px;
+}
+
+.card_web .main_card .card_price h2 {
+    font-size: 28px;
+    color: #222831;
+}
+
+.card_web .main_card .card_button {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.card_web .main_card .card_button .quantity{
+    width: 50%;
+    height: 70px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.card_web .main_card .card_button .quantity button{
+    width: 25%;
+    height: 40px;
+    background-color: #FBF8EF;
+    color: #222831;
+    border: 3px solid ;
+    border-radius: 40%;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_web .main_card .card_button .quantity .quantity_target{
+    font-size: 22px;
+    color: #222831;
+}
+
+.card_web .main_card .card_button button {
+    width: 40%;
+    height: 40px;
+    border-radius: 12px;
+    border: 2px solid #F96E2A;
+    background-color: #78B3CE;
+    color: #FBF8EF;
+    font-size: 16px;
+    font-weight: 800;
+}

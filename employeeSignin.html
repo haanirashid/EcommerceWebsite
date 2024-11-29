@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Signin</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main_signin">
+        <div class="signin_nav">
+            <button><a href="./index.html">Back</a></button>
+            <h1>Hats Paradise</h1>
+            <h1>Employee's Signin</h1>
+        </div>
+        <div class="signin_form">
+            <form onsubmit="employeeSign(event)">
+                <div class="sign_option">
+                    <input type="name" id="employee_sign_name" placeholder="Enter Full Name">
+                </div>
+                <div class="sign_option">
+                    <input type="email" id="employee_sign_email" placeholder="Enter Email">
+                </div>
+                <div class="sign_option">
+                    <input type="password" id="employee_sign_pass" placeholder="Enter Password">
+                </div>
+                <div class="sign_option_two">
+                    <p>Employment Status</p>
+                    <input type="radio" name="employee_status" id="employee_status" value="emplpoyee">
+                    <label for="employee_status">Employee</label>
+                    <input type="radio" name="employee_status" id="manager_status" value="manager">
+                    <label for="manager_status">Manager</label>
+                    <input type="radio" name="employee_status" id="partner_status" value="partner">
+                    <label for="partner_status">Partner</label>
+                </div>
+                <div class="sign_option">
+                    <button onclick="employeeSign(event)">Signin</button>
+                </div>
+                <div class="sign_option">
+                    <p>Already have an account? <a href="./login.html">Login here!</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
