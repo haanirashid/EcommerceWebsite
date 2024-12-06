@@ -184,7 +184,6 @@ const customerSign = (event) => {
 }
 
 localStorage.setItem("loginStatus", true);
-console.log(localStorage.getItem("loginStatus"), "LogginStatus Before Logging in"); // False;
 var getLoginStatusValue = localStorage.getItem("loginStatus");
 const loginFunc = (event) => {
     event.preventDefault();
@@ -204,12 +203,10 @@ const loginFunc = (event) => {
         for (var i = 0; i < getEmployeeArr.length; i++) {
             if (loginEmail.value === getEmployeeArr[i].email && loginPass.value === getEmployeeArr[i].pass) {
                 console.log(getEmployeeArr[i]);
-                console.log("loggged in as Employee");
                 localStorage.setItem("loggedEmployeeName", getEmployeeArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getEmployeeArr[i].statuss);
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
-                    console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
                 }
                 window.location.href = "./dashboard.html";
                 return;
@@ -232,12 +229,10 @@ const loginFunc = (event) => {
         for (var i = 0; i < getPartnerArr.length; i++) {
             if (loginEmail.value === getPartnerArr[i].email && loginPass.value === getPartnerArr[i].pass) {
                 console.log(getPartnerArr[i]);
-                console.log("logged in as Partner");
                 localStorage.setItem("loggedEmployeeName", getPartnerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getPartnerArr[i].statuss);
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
-                    console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
                 }
                 window.location.href = "./dashboard.html";
                 return;
@@ -246,12 +241,10 @@ const loginFunc = (event) => {
     }
     if (loginCustomerStatus.checked) {
         for (var i = 0; i < getCustomerArr.length; i++) {
-            console.log("logged in as Customer");
             var loggedCustomerObj = getCustomerArr[i];
             localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
             if (getLoginStatusValue === "false") {
                 localStorage.setItem("loginStatus", true);
-                console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
             }
             window.location.href = "./website.html";
             return;
@@ -393,36 +386,31 @@ var productCartArr = JSON.parse(localStorage.getItem("productCartArr")) || [];
 localStorage.setItem("productCartArr", JSON.stringify(productCartArr))
 const addToCart = (index) => {
     var getLoginStatus = localStorage.getItem("loginStatus");
-    var loggedCustomerObj = JSON.parse(localStorage.getItem("loggedCustomerObj"));
     var productProfile = productsArr[index];
 
     var quantityElement = document.getElementById(productProfile.productId);
     var quantityCount = parseInt(quantityElement.innerHTML);
 
     if (quantityCount <= 0) {
-        console.error("Please Add Quantity to product");
+        alert("Please Add Quantity to product")
         return;
     }
 
     if (getLoginStatus === "true") {
-        console.log("Product Added to Cart", productProfile);
-        console.log("Customer Buying", loggedCustomerObj);
-
         var orderMade = {
             productID : productProfile.productId,
             name : productProfile.name,
             image : productProfile.image,
             parra : productProfile.parra,
+            price : productProfile.price,
             quantity: quantityCount
         }
-        console.log("OrderMade", orderMade);
         productCartArr.push(orderMade);
-        localStorage.setItem("productCartArr", JSON.stringify(productCartArr))
-        console.log("productCartArr", productCartArr);
+        localStorage.setItem("productCartArr", JSON.stringify(productCartArr));
         alert("product is added to your cart!")
     }
     else if (getLoginStatus === false) {
-        console.error("user is not logged in!");
+        alert("user is not logged in!");
         window.location.href = "./customerSignin.html";
     }
 }

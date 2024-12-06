@@ -24,30 +24,8 @@
                 </ul>
             </div>
         </div>
-        <div id="cart_target" class="main_cart">
-            <!-- <div class="sub_cart">
-                <div class="cart_img">
-                    <img src="https://i.ebayimg.com/00/s/MTIxMlgxNjAw/z/oiAAAOSw3NBfUAG2/$_57.JPG?set_id=8800005007" >
-                </div>
-                <div class="cart_detail">
-                    <div class="detail_div detail_name">
-                        <h1>Philadelphia Eagles</h1>
-                    </div>
-                    <div class="detail_div detail_detail">
-                        <p>Gritty, resilient NFL team celebrated for their devoted fanbase, strong defense, and 2018 Super Bowl victory.</p>
-                    </div>
-                    <div class="detail_div detail_price">
-                        <h2>1,500/-</h2>
-                    </div>
-                    <div class="detail_div detail_quantity">
-                        <h2>x2</h2>
-                    </div>
-                    <div class="detail_div detail_button">
-                        <button>Delete</button>
-                    </div>
-                </div>
-            </div> -->
-        </div>
+        <div id="cart_target" class="main_cart"></div>
+        <div class="cart_order_button"><button onclick="placeOrder()">Place Order</button></div>
     </div>
     <script>
         var getProductCartArr = JSON.parse(localStorage.getItem("productCartArr"));
@@ -76,11 +54,33 @@
 
         cartPrint()
 
-        const cartDelete = (index)=>{
-            getProductCartArr.splice(index,1);
-            localStorage.setItem("productCartArr",JSON.stringify(getProductCartArr));
+        const cartDelete = (index) => {
+            getProductCartArr.splice(index, 1);
+            localStorage.setItem("productCartArr", JSON.stringify(getProductCartArr));
             cartPrint()
         }
+
+        var orderArr = JSON.parse(localStorage.getItem("orderArr")) || [];
+        localStorage.setItem("orderArr", JSON.stringify(orderArr))
+        const placeOrder = () => {
+
+            var orderMade;
+            var loggedCustomerObj = JSON.parse(localStorage.getItem("loggedCustomerObj"));
+
+            for (var i = 0; i < getProductCartArr.length; i++) {
+                orderMade = {
+                    customerId: loggedCustomerObj.id,
+                    productId: getProductCartArr[i].productID,
+                    price: getProductCartArr[i].price,
+                    quantity: getProductCartArr[i].quantity
+                }
+                
+                orderArr.push(orderMade);
+                localStorage.setItem("orderArr",JSON.stringify(orderArr));
+            }
+            alert("your order has been placed!")
+        }
+
     </script>
 </body>
 
