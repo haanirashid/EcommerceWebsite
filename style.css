@@ -655,3 +655,115 @@
     font-size: 16px;
     font-weight: 800;
 }
+
+/* website Css End */
+
+/* cart Css Start */
+
+.main_cart {
+    width: 100%;
+    height: auto;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.main_cart .sub_cart {
+margin-top: 15px;
+margin-bottom: 15px;
+    width: 80%;
+    height: 350px;
+    display: flex;
+    overflow: hidden;
+    background-color: #C9E6F0;
+    border: 4px solid #F96E2A;
+    border-radius: 12px;
+}
+
+.sub_cart .cart_img {
+    width: 30%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.sub_cart .cart_img img {
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+}
+
+.sub_cart .cart_detail {
+    width: 70%;
+    height: 350px;
+}
+
+.sub_cart .cart_detail .detail_name,
+.sub_cart .cart_detail .detail_price {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.sub_cart .cart_detail .detail_name h1{
+    font-size: 30px;
+    color: #F96E2A;
+}
+
+.sub_cart .cart_detail .detail_price h2{
+    font-size: 24px;
+    font-weight: 100;
+    color: #222831;
+}
+
+.sub_cart .cart_detail .detail_detail {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub_cart .cart_detail .detail_detail p {
+    width: 80%;
+    text-align: justify;
+    font-size: 18px;
+    color: #222831;
+}
+
+.sub_cart .cart_detail .detail_quantity{
+    width: 100%;
+    height: 50px;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.sub_cart .cart_detail .deatil_quantity h2{
+    font-size: 22px;
+    color: #222831;
+}
+
+.sub_cart .cart_detail .detail_button {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.sub_cart .cart_detail .detail_button button{
+    width: 150px;
+    height: 35px;
+    border: 2px solid whitesmoke;
+    border-radius:12px;
+    font-size: 16px;
+    color: whitesmoke;
+    background-color: #FC345C;
+
+}

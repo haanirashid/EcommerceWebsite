@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main_web">
+        <div class="nav_web">
+            <div class="title">
+                <h1>Hats Paradise</h1>
+            </div>
+            <div class="list">
+                <ul>
+                    <li><a href="./website.html">Home Page</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="./index.html">Sign Out</a></li>
+                    <li><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="cart_target" class="main_cart">
+            <!-- <div class="sub_cart">
+                <div class="cart_img">
+                    <img src="https://i.ebayimg.com/00/s/MTIxMlgxNjAw/z/oiAAAOSw3NBfUAG2/$_57.JPG?set_id=8800005007" >
+                </div>
+                <div class="cart_detail">
+                    <div class="detail_div detail_name">
+                        <h1>Philadelphia Eagles</h1>
+                    </div>
+                    <div class="detail_div detail_detail">
+                        <p>Gritty, resilient NFL team celebrated for their devoted fanbase, strong defense, and 2018 Super Bowl victory.</p>
+                    </div>
+                    <div class="detail_div detail_price">
+                        <h2>1,500/-</h2>
+                    </div>
+                    <div class="detail_div detail_quantity">
+                        <h2>x2</h2>
+                    </div>
+                    <div class="detail_div detail_button">
+                        <button>Delete</button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <script>
+        var getProductCartArr = JSON.parse(localStorage.getItem("productCartArr"));
+        const cartPrint = () => {
+            console.log(getProductCartArr);
+
+            var cartTarget = document.getElementById("cart_target");
+            cartHtml = "";
+            for (var i = 0; i < getProductCartArr.length; i++) {
+                cartHtml +=
+                    `
+        <div class="sub_cart">
+                <div class="cart_img"><img src="${getProductCartArr[i].image}" ></div>
+                <div class="cart_detail">
+                    <div class="detail_div detail_name"><h1>${getProductCartArr[i].name}</h1></div>
+                    <div class="detail_div detail_detail"><p>${getProductCartArr[i].parra}</p></div>
+                    <div class="detail_div detail_price"><h2>${getProductCartArr[i].price}</h2></div>
+                    <div class="detail_div detail_quantity"><h2>x${getProductCartArr[i].quantity}</h2></div>
+                    <div class="detail_div detail_button"><button onclick="cartDelete(${[i]})">Delete</button></div>
+                </div>
+            </div>
+        `
+            }
+            cartTarget.innerHTML = cartHtml;
+        }
+
+        cartPrint()
+
+        const cartDelete = (index)=>{
+            getProductCartArr.splice(index,1);
+            localStorage.setItem("productCartArr",JSON.stringify(getProductCartArr));
+            cartPrint()
+        }
+    </script>
+</body>
+
+</html>

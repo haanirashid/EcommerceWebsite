@@ -103,7 +103,7 @@ const employeeSign = (event) => {
         localStorage.setItem("partnerArr", JSON.stringify(partnerArr));
 
         signAlertTarget.innerHTML =
-        `
+            `
            <div class="sign_alert_target">
                 <h2>User has Signed UP!</h2>
             </div>
@@ -125,7 +125,7 @@ const employeeSign = (event) => {
         localStorage.setItem("partnerArr", JSON.stringify(partnerArr));
 
         signAlertTarget.innerHTML =
-        `
+            `
            <div class="sign_alert_target">
                 <h2>User has Signed UP!</h2>
             </div>
@@ -147,7 +147,7 @@ const employeeSign = (event) => {
         localStorage.setItem("partnerArr", JSON.stringify(partnerArr));
 
         signAlertTarget.innerHTML =
-        `
+            `
            <div class="sign_alert_target">
                 <h2>User has Signed UP!</h2>
             </div>
@@ -183,7 +183,7 @@ const customerSign = (event) => {
         `
 }
 
-localStorage.setItem("loginStatus", false);
+localStorage.setItem("loginStatus", true);
 console.log(localStorage.getItem("loginStatus"), "LogginStatus Before Logging in"); // False;
 var getLoginStatusValue = localStorage.getItem("loginStatus");
 const loginFunc = (event) => {
@@ -207,7 +207,7 @@ const loginFunc = (event) => {
                 console.log("loggged in as Employee");
                 localStorage.setItem("loggedEmployeeName", getEmployeeArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getEmployeeArr[i].statuss);
-                if (getLoginStatusValue === false) {
+                if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
                     console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
                 }
@@ -221,7 +221,7 @@ const loginFunc = (event) => {
                 console.log("logged in as Manager");
                 localStorage.setItem("loggedEmployeeName", getManagerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getManagerArr[i].statuss);
-                if (getLoginStatusValue === false) {
+                if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
                     console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
                 }
@@ -235,7 +235,7 @@ const loginFunc = (event) => {
                 console.log("logged in as Partner");
                 localStorage.setItem("loggedEmployeeName", getPartnerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getPartnerArr[i].statuss);
-                if (getLoginStatusValue === false) {
+                if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
                     console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
                 }
@@ -249,7 +249,7 @@ const loginFunc = (event) => {
             console.log("logged in as Customer");
             var loggedCustomerObj = getCustomerArr[i];
             localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
-            if (getLoginStatusValue === false) {
+            if (getLoginStatusValue === "false") {
                 localStorage.setItem("loginStatus", true);
                 console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
             }
@@ -389,39 +389,39 @@ const quantityAdd = (productId) => {
     quantityTarget.innerHTML = currentCount + 1;
 }
 
-var orderArr = JSON.parse(localStorage.getItem("orderArr")) || [];
-localStorage.setItem("orderArr", JSON.stringify(orderArr))
+var productCartArr = JSON.parse(localStorage.getItem("productCartArr")) || [];
+localStorage.setItem("productCartArr", JSON.stringify(productCartArr))
 const addToCart = (index) => {
-    var getLoginStatusValue = localStorage.getItem("loginStatus");
+    var getLoginStatus = localStorage.getItem("loginStatus");
     var loggedCustomerObj = JSON.parse(localStorage.getItem("loggedCustomerObj"));
     var productProfile = productsArr[index];
 
     var quantityElement = document.getElementById(productProfile.productId);
-    var quantitiyCount = parseInt(quantityElement.innerHTML);
+    var quantityCount = parseInt(quantityElement.innerHTML);
 
-    if (quantitiyCount <= 0) {
+    if (quantityCount <= 0) {
         console.error("Please Add Quantity to product");
         return;
     }
 
-    if (getLoginStatusValue === true) {
+    if (getLoginStatus === "true") {
         console.log("Product Added to Cart", productProfile);
         console.log("Customer Buying", loggedCustomerObj);
 
         var orderMade = {
-            customerID: loggedCustomerObj.id,
-            productID: productProfile.productId,
-            productName: productProfile.name,
-            productPrice: productProfile.price,
-            quantitiy: quantitiyCount
+            productID : productProfile.productId,
+            name : productProfile.name,
+            image : productProfile.image,
+            parra : productProfile.parra,
+            quantity: quantityCount
         }
-        console.log("Order Profile", orderMade);
-        orderArr.push(orderMade);
-        localStorage.setItem("orderArr", JSON.stringify(orderArr))
-        console.log("order Arr", orderArr);
-
+        console.log("OrderMade", orderMade);
+        productCartArr.push(orderMade);
+        localStorage.setItem("productCartArr", JSON.stringify(productCartArr))
+        console.log("productCartArr", productCartArr);
+        alert("product is added to your cart!")
     }
-    else if (getLoginStatusValue === false) {
+    else if (getLoginStatus === false) {
         console.error("user is not logged in!");
         window.location.href = "./customerSignin.html";
     }
