@@ -85,6 +85,7 @@ const employeeSign = (event) => {
     var employeeStatus = document.getElementById("employee_status");
     var managerStatus = document.getElementById("manager_status");
     var partnerStatus = document.getElementById("partner_status");
+    var signAlertTarget = document.getElementById("sign_alert_target");
 
     if (employeeStatus.checked) {
         idCount++
@@ -100,6 +101,13 @@ const employeeSign = (event) => {
         localStorage.setItem("employeeArr", JSON.stringify(employeeArr));
         localStorage.setItem("managerArr", JSON.stringify(managerArr));
         localStorage.setItem("partnerArr", JSON.stringify(partnerArr));
+
+        signAlertTarget.innerHTML =
+        `
+           <div class="sign_alert_target">
+                <h2>User has Signed UP!</h2>
+            </div>
+        `
     }
     else if (managerStatus.checked) {
         idCount++;
@@ -115,6 +123,13 @@ const employeeSign = (event) => {
         localStorage.setItem("employeeArr", JSON.stringify(employeeArr));
         localStorage.setItem("managerArr", JSON.stringify(managerArr));
         localStorage.setItem("partnerArr", JSON.stringify(partnerArr));
+
+        signAlertTarget.innerHTML =
+        `
+           <div class="sign_alert_target">
+                <h2>User has Signed UP!</h2>
+            </div>
+        `
     }
     else if (partnerStatus.checked) {
         idCount++;
@@ -130,6 +145,13 @@ const employeeSign = (event) => {
         localStorage.setItem("employeeArr", JSON.stringify(employeeArr));
         localStorage.setItem("managerArr", JSON.stringify(managerArr));
         localStorage.setItem("partnerArr", JSON.stringify(partnerArr));
+
+        signAlertTarget.innerHTML =
+        `
+           <div class="sign_alert_target">
+                <h2>User has Signed UP!</h2>
+            </div>
+        `
     }
 };
 
@@ -139,6 +161,7 @@ const customerSign = (event) => {
     var customerSignName = document.getElementById("customer_sign_name");
     var customerSignEmail = document.getElementById("customer_sign_email");
     var customerSignPass = document.getElementById("customer_sign_pass");
+    var signAlertTarget = document.getElementById("sign_alert_target");
 
     idCount++
     obj = {
@@ -152,11 +175,17 @@ const customerSign = (event) => {
     localStorage.setItem("customerArr", JSON.stringify(customerArr));
     console.log("customer sign in working");
 
+    signAlertTarget.innerHTML =
+        `
+           <div class="sign_alert_target">
+                <h2>User has Signed UP!</h2>
+            </div>
+        `
 }
 
-localStorage.setItem("loginStatus", JSON.stringify(false));
+localStorage.setItem("loginStatus", false);
 console.log(localStorage.getItem("loginStatus"), "LogginStatus Before Logging in"); // False;
-
+var getLoginStatusValue = localStorage.getItem("loginStatus");
 const loginFunc = (event) => {
     event.preventDefault();
 
@@ -171,10 +200,6 @@ const loginFunc = (event) => {
     var getPartnerArr = JSON.parse(localStorage.getItem("partnerArr"));
     var getCustomerArr = JSON.parse(localStorage.getItem("customerArr"));
 
-    console.log(getEmployeeArr);
-    console.log(getManagerArr);
-    console.log(getPartnerArr);
-
     if (loginEmployeeStatus.checked) {
         for (var i = 0; i < getEmployeeArr.length; i++) {
             if (loginEmail.value === getEmployeeArr[i].email && loginPass.value === getEmployeeArr[i].pass) {
@@ -182,11 +207,11 @@ const loginFunc = (event) => {
                 console.log("loggged in as Employee");
                 localStorage.setItem("loggedEmployeeName", getEmployeeArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getEmployeeArr[i].statuss);
-                localStorage.setItem("loginStatus", JSON.stringify(true));
-                console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
-                setTimeout(() => {
-                    window.location.href = "./dashboard.html";
-                }, 1000)
+                if (getLoginStatusValue === false) {
+                    localStorage.setItem("loginStatus", true);
+                    console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
+                }
+                window.location.href = "./dashboard.html";
                 return;
             }
         }
@@ -196,11 +221,11 @@ const loginFunc = (event) => {
                 console.log("logged in as Manager");
                 localStorage.setItem("loggedEmployeeName", getManagerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getManagerArr[i].statuss);
-                localStorage.setItem("loginStatus", JSON.stringify(true));
-                console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
-                setTimeout(() => {
-                    window.location.href = "./dashboard.html";
-                }, 1000)
+                if (getLoginStatusValue === false) {
+                    localStorage.setItem("loginStatus", true);
+                    console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
+                }
+                window.location.href = "./dashboard.html";
                 return;
             }
         }
@@ -210,11 +235,11 @@ const loginFunc = (event) => {
                 console.log("logged in as Partner");
                 localStorage.setItem("loggedEmployeeName", getPartnerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getPartnerArr[i].statuss);
-                localStorage.setItem("loginStatus", JSON.stringify(true));
-                console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
-                setTimeout(() => {
-                    window.location.href = "./dashboard.html";
-                }, 1000);
+                if (getLoginStatusValue === false) {
+                    localStorage.setItem("loginStatus", true);
+                    console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
+                }
+                window.location.href = "./dashboard.html";
                 return;
             }
         }
@@ -224,11 +249,11 @@ const loginFunc = (event) => {
             console.log("logged in as Customer");
             var loggedCustomerObj = getCustomerArr[i];
             localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
-            localStorage.setItem("loginStatus", JSON.stringify(true));
-            console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
-            setTimeout(() => {
-                window.location.href = "./website.html";
-            }, 1000);
+            if (getLoginStatusValue === false) {
+                localStorage.setItem("loginStatus", true);
+                console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
+            }
+            window.location.href = "./website.html";
             return;
         };
     }
@@ -367,7 +392,7 @@ const quantityAdd = (productId) => {
 var orderArr = JSON.parse(localStorage.getItem("orderArr")) || [];
 localStorage.setItem("orderArr", JSON.stringify(orderArr))
 const addToCart = (index) => {
-    var getLoginStatus = JSON.parse(localStorage.getItem("loginStatus"));
+    var getLoginStatusValue = localStorage.getItem("loginStatus");
     var loggedCustomerObj = JSON.parse(localStorage.getItem("loggedCustomerObj"));
     var productProfile = productsArr[index];
 
@@ -379,7 +404,7 @@ const addToCart = (index) => {
         return;
     }
 
-    if (getLoginStatus === true) {
+    if (getLoginStatusValue === true) {
         console.log("Product Added to Cart", productProfile);
         console.log("Customer Buying", loggedCustomerObj);
 
@@ -396,7 +421,7 @@ const addToCart = (index) => {
         console.log("order Arr", orderArr);
 
     }
-    else if (getLoginStatus === false) {
+    else if (getLoginStatusValue === false) {
         console.error("user is not logged in!");
         window.location.href = "./customerSignin.html";
     }

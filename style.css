@@ -138,7 +138,16 @@
     text-decoration: underline #C9E6F0;
 }
 
-.main_signin .signin_form,
+.main_signin .signin_form {
+    width: 100%;
+    min-height: calc(100vh - 200px);
+    background-color: #78B3CE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .main_login .login_form {
     width: 100%;
     min-height: calc(100vh - 100px);
@@ -232,6 +241,38 @@
 
 
 /* Signin Section Css End */
+
+/* signin alert Css Satrt */
+
+.sign_alert {
+    width: 100%;
+    height: 100px;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #78B3CE;
+}
+
+.sign_alert .sign_alert_target {
+    width: 50%;
+    height: 50px;
+    border: 2px solid whitesmoke;
+    background-color: #00FF9C;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign_alert .sign_alert_target h2 {
+    font-size: 24px;
+    font-weight: 100;
+    color: whitesmoke;
+}
+
+/* Sign alert Css End */
+
+
 /* Login Section Css End */
 
 
@@ -578,7 +619,7 @@
     padding: 15px;
 }
 
-.card_web .main_card .card_button .quantity{
+.card_web .main_card .card_button .quantity {
     width: 50%;
     height: 70px;
     display: flex;
@@ -586,12 +627,12 @@
     align-items: center;
 }
 
-.card_web .main_card .card_button .quantity button{
+.card_web .main_card .card_button .quantity button {
     width: 25%;
     height: 40px;
     background-color: #FBF8EF;
     color: #222831;
-    border: 3px solid ;
+    border: 3px solid;
     border-radius: 40%;
     font-size: 14px;
     display: flex;
@@ -599,7 +640,7 @@
     align-items: center;
 }
 
-.card_web .main_card .card_button .quantity .quantity_target{
+.card_web .main_card .card_button .quantity .quantity_target {
     font-size: 22px;
     color: #222831;
 }
