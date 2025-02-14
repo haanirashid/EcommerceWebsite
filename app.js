@@ -1,18 +1,37 @@
 console.log("testing");
 
 
+
 const radioFuc = (event) => {
     event.preventDefault();
     var radioEmployee = document.getElementById("radioEmployee");
     var radioCustomer = document.getElementById("radioCustomer");
-
+    var verificationBox = document.getElementById("employeeVerify");
     if (radioEmployee.checked) {
-        window.location.href = "./employeeSignin.html";
+        verificationBox.style.display = "block";
     }
     if (radioCustomer.checked) {
         window.location.href = "customerSignin.html";
     }
 }
+
+function verifyEmployee(){
+    var verificationInput = document.getElementById("verification_code");
+    if(verificationInput.value === "12345"){
+        window.location.href = "employeeSignin.html"
+    }else{
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Verification code incorrect, Try Again",
+          });
+    }
+}
+
+function closeVerify(){
+    var verificationBox = document.getElementById("employeeVerify");
+    verificationBox.style.display = "none";
+};
 
 var employeeArr = [
     {

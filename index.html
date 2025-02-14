@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body id="body_select">
@@ -23,11 +24,13 @@
             <div class="option">
                 <form onsubmit="radioFuc(event)">
                     <div class="sub_option">
-                        <input type="radio" class="radio_style" name="visitor_status" id="radioEmployee" value="employee">
+                        <input type="radio" class="radio_style" name="visitor_status" id="radioEmployee"
+                            value="employee">
                         <label for="employee">Employee</label>
                     </div>
                     <div class="sub_option">
-                        <input type="radio" class="radio_style" name="visitor_status" id="radioCustomer" value="customer">
+                        <input type="radio" class="radio_style" name="visitor_status" id="radioCustomer"
+                            value="customer">
                         <label for="customer">Customer</label>
                     </div>
                     <div class="sub_option">
@@ -35,6 +38,12 @@
                     </div>
                 </form>
             </div>
+        </div>
+        <div class="employee_select" id="employeeVerify">
+            <span class="close_button" onclick="closeVerify()">X</span>
+            <h2>Enter Verification Code for Employees</h2>
+            <input type="text" id="verification_code" placeholder="Verification Code for Employees">
+            <button onclick="verifyEmployee()">Submit</button>
         </div>
     </div>
     <script src="app.js"></script>
