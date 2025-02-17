@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <div class="main_dash">
         <div class="nav_dash">
@@ -40,6 +42,15 @@
                 </table>
             </div>
         </div>
+        <div class="product_edit" id="product_edit">
+            <span class="close_button" onclick="closeAdd()">X</span>
+            <h2>Edit Product Information</h2>
+            <input type="text" id="product_name" placeholder="Enter Product New Name">
+            <input type="text" id="product_price" placeholder="Enter Product New Price">
+            <input type="text" id="product_url" placeholder="Enter Product New Image URL">
+            <textarea id="product_description" placeholder="Enter Product New Description"></textarea>
+            <button id="save_product_btn" onclick="saveProductChanges()">Submit</button>
+        </div>
     </div>
     <script>
         var getLoggedEmployeeName = localStorage.getItem("loggedEmployeeName");
@@ -62,20 +73,64 @@
         var productDiv;
         var getProductArr = JSON.parse(localStorage.getItem("productArr"));
         var productTarget = document.getElementById("products_target");
-        getProductArr.forEach((value)=>{
-            productDiv = 
-            `
+        getProductArr.forEach((value, index) => {
+            productDiv =
+                `
             <tr>
                         <td>${value.productId}</td>
                         <td>${value.name}</td>
                         <td>${value.price}</td>
-                        <td><button>Edit</button></td>
-                        <td><button>Delete</button></td>
+                        <td><button onclick="editProduct(${index})">Edit</button></td>
+                        <td><button onclick ="deleteProduct(${index})">Delete</button></td>
             </tr>
             `;
             productTarget.innerHTML += productDiv
         })
 
+function editProduct(index) {
+    var getProductArr = JSON.parse(localStorage.getItem("productArr")) || [];
+    var product = getProductArr[index];
+
+    if (product) {
+        var productEdit = document.getElementById("product_edit");
+        productEdit.style.display = "block";
+
+        document.getElementById("product_name").value = product.name;
+        document.getElementById("product_price").value = product.price;
+        document.getElementById("product_url").value = product.image;
+        document.getElementById("product_description").value = product.parra;
+
+        var saveButton = document.getElementById("save_product_btn");
+        saveButton.setAttribute("data-index", index);
+    }
+}
+
+function saveProductChanges() {
+    var getProductArr = JSON.parse(localStorage.getItem("productArr")) || [];
+
+    var index = document.getElementById("save_product_btn").getAttribute("data-index");
+
+    if (index !== null) {
+        index = parseInt(index);
+
+        getProductArr[index].name = document.getElementById("product_name").value;
+        getProductArr[index].price = document.getElementById("product_price").value;
+        getProductArr[index].image = document.getElementById("product_url").value;
+        getProductArr[index].parra = document.getElementById("product_description").value;
+
+        localStorage.setItem("productArr", JSON.stringify(getProductArr));
+
+        closeAdd();
+
+        location.reload();
+    }
+}
+
+function closeAdd() {
+    document.getElementById("product_edit").style.display = "none";
+}
+
     </script>
 </body>
+
 </html>

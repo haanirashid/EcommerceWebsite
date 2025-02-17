@@ -230,6 +230,7 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getEmployeeArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getEmployeeArr[i].statuss);
+                localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
                 localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
@@ -249,6 +250,7 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getManagerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getManagerArr[i].statuss);
+                localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
                 localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
@@ -269,6 +271,7 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getPartnerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getPartnerArr[i].statuss);
+                localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
                 localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
@@ -288,6 +291,7 @@ const loginFunc = (event) => {
             if (loginEmail.value === getCustomerArr[i].email && loginPass.value === getCustomerArr[i].pass) {
                 var loggedCustomerObj = getCustomerArr[i];
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
+                localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
                 }
@@ -394,22 +398,23 @@ var productsArr = [
 
 var quantityCount = 0;
 const cardsPrint = () => {
+    var getProductArr = JSON.parse(localStorage.getItem("productArr"));
     var cardsTarget = document.getElementById("cards_target");
     var cardHtml = "";
 
-    for (var i = 0; i < productsArr.length; i++) {
+    for (var i = 0; i < getProductArr.length; i++) {
         cardHtml +=
             `
             <div class="main_card">
-                <div class="card_img"><img src="${productsArr[i].image}"></div>
-                <div class="card_title"><h2>${productsArr[i].name}</h2></div>
-                <div class="card_parra"><p>${productsArr[i].parra}</p></div>
-                 <div class="card_price"><h2>${productsArr[i].price}</h2></div>
+                <div class="card_img"><img src="${getProductArr[i].image}"></div>
+                <div class="card_title"><h2>${getProductArr[i].name}</h2></div>
+                <div class="card_parra"><p>${getProductArr[i].parra}</p></div>
+                 <div class="card_price"><h2>${getProductArr[i].price}</h2></div>
                 <div class="card_button">
                     <div class="quantity">
-                        <button onclick="quantityMinus(${productsArr[i].productId})"><i class="fa-solid fa-minus"></i></button>
-                        <div id="${productsArr[i].productId}" class="quantity_target">${quantityCount}</div>
-                        <button onclick="quantityAdd(${productsArr[i].productId})"><i class="fa-solid fa-plus"></i></button>
+                        <button onclick="quantityMinus(${getProductArr[i].productId})"><i class="fa-solid fa-minus"></i></button>
+                        <div id="${getProductArr[i].productId}" class="quantity_target">${quantityCount}</div>
+                        <button onclick="quantityAdd(${getProductArr[i].productId})"><i class="fa-solid fa-plus"></i></button>
                     </div>
                     <button onclick="addToCart(${[i]})">Add To Cart</button>
                 </div>
