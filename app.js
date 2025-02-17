@@ -180,9 +180,9 @@ const employeeSign = (event) => {
 
 const customerSign = (event) => {
     event.preventDefault();
-    localStorage.setItem("customerArr", JSON.stringify(customerArr)); 
+    localStorage.setItem("customerArr", JSON.stringify(customerArr));
     var getCustomerArr = JSON.parse(localStorage.getItem("customerArr"));
-    
+
 
     var customerSignName = document.getElementById("customer_sign_name");
     var customerSignEmail = document.getElementById("customer_sign_email");
@@ -230,11 +230,17 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getEmployeeArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getEmployeeArr[i].statuss);
+                localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
                 }
                 window.location.href = "./dashboard.html";
                 return;
+            } else {
+                Swal.fire({
+                    title: "Incorrect email or Password!",
+                    icon: "error"
+                });
             }
         }
         for (var i = 0; i < getManagerArr.length; i++) {
@@ -243,12 +249,18 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getManagerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getManagerArr[i].statuss);
+                localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
                     console.log(localStorage.getItem("loginStatus"), "LogginStatus After Logging in");
                 }
                 window.location.href = "./dashboard.html";
                 return;
+            } else {
+                Swal.fire({
+                    title: "Incorrect email or Password!",
+                    icon: "error"
+                });
             }
         }
         for (var i = 0; i < getPartnerArr.length; i++) {
@@ -257,11 +269,17 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getPartnerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getPartnerArr[i].statuss);
+                localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
                 }
                 window.location.href = "./dashboard.html";
                 return;
+            } else {
+                Swal.fire({
+                    title: "Incorrect email or Password!",
+                    icon: "error"
+                });
             }
         }
     }
@@ -275,6 +293,11 @@ const loginFunc = (event) => {
                 }
                 window.location.href = "./website.html";
                 return;
+            } else {
+                Swal.fire({
+                    title: "Incorrect email or Password!",
+                    icon: "error"
+                });
             }
         };
     }
@@ -423,7 +446,7 @@ const addToCart = (index) => {
         Swal.fire({
             title: "Product is not added to your cart!",
             icon: "error"
-          });
+        });
         return;
     }
 
@@ -441,13 +464,13 @@ const addToCart = (index) => {
         Swal.fire({
             title: "Product is added to your cart!",
             icon: "success"
-          });
+        });
     }
     else if (getLoginStatus === false) {
         Swal.fire({
             title: "Please Login First!",
             icon: "error"
-          });
+        });
         window.location.href = "./customerSignin.html";
     }
 }
