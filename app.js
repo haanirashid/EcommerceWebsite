@@ -230,7 +230,7 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getEmployeeArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getEmployeeArr[i].statuss);
-                localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
+                // localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
                 localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
@@ -250,7 +250,7 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getManagerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getManagerArr[i].statuss);
-                localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
+                // localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
                 localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
@@ -271,7 +271,7 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getPartnerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getPartnerArr[i].statuss);
-                localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
+                // localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
                 localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
@@ -398,7 +398,7 @@ var productsArr = [
 
 var quantityCount = 0;
 const cardsPrint = () => {
-    var getProductArr = JSON.parse(localStorage.getItem("productArr"));
+    var getProductArr = JSON.parse(localStorage.getItem("productArr")) || productsArr;
     var cardsTarget = document.getElementById("cards_target");
     var cardHtml = "";
 
