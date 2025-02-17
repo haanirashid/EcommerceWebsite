@@ -30,6 +30,7 @@
             <div class="right">
                 <div class="sub_header">
                     <h1>Products</h1>
+                    <button onclick="addProduct()">Add Product</button>
                 </div>
                 <table id="products_target">
                     <tr>
@@ -87,48 +88,97 @@
             productTarget.innerHTML += productDiv
         })
 
-function editProduct(index) {
-    var getProductArr = JSON.parse(localStorage.getItem("productArr")) || [];
-    var product = getProductArr[index];
+        function editProduct(index) {
+            var getProductArr = JSON.parse(localStorage.getItem("productArr")) || [];
+            var product = getProductArr[index];
 
-    if (product) {
-        var productEdit = document.getElementById("product_edit");
-        productEdit.style.display = "block";
+            if (product) {
+                var productEdit = document.getElementById("product_edit");
+                productEdit.style.display = "block";
 
-        document.getElementById("product_name").value = product.name;
-        document.getElementById("product_price").value = product.price;
-        document.getElementById("product_url").value = product.image;
-        document.getElementById("product_description").value = product.parra;
+                document.getElementById("product_name").value = product.name;
+                document.getElementById("product_price").value = product.price;
+                document.getElementById("product_url").value = product.image;
+                document.getElementById("product_description").value = product.parra;
 
-        var saveButton = document.getElementById("save_product_btn");
-        saveButton.setAttribute("data-index", index);
-    }
-}
+                var saveButton = document.getElementById("save_product_btn");
+                saveButton.setAttribute("data-index", index);
+            }
+        }
 
-function saveProductChanges() {
-    var getProductArr = JSON.parse(localStorage.getItem("productArr")) || [];
+        function saveProductChanges() {
+            var getProductArr = JSON.parse(localStorage.getItem("productArr")) || [];
 
-    var index = document.getElementById("save_product_btn").getAttribute("data-index");
+            var index = document.getElementById("save_product_btn").getAttribute("data-index");
 
-    if (index !== null) {
-        index = parseInt(index);
+            if (index !== null) {
+                index = parseInt(index);
 
-        getProductArr[index].name = document.getElementById("product_name").value;
-        getProductArr[index].price = document.getElementById("product_price").value;
-        getProductArr[index].image = document.getElementById("product_url").value;
-        getProductArr[index].parra = document.getElementById("product_description").value;
+                getProductArr[index].name = document.getElementById("product_name").value;
+                getProductArr[index].price = document.getElementById("product_price").value;
+                getProductArr[index].image = document.getElementById("product_url").value;
+                getProductArr[index].parra = document.getElementById("product_description").value;
 
-        localStorage.setItem("productArr", JSON.stringify(getProductArr));
+                localStorage.setItem("productArr", JSON.stringify(getProductArr));
 
-        closeAdd();
+                closeAdd();
 
-        location.reload();
-    }
-}
+                location.reload();
+            }
+        }
 
-function closeAdd() {
-    document.getElementById("product_edit").style.display = "none";
-}
+        function closeAdd() {
+            document.getElementById("product_edit").style.display = "none";
+        }
+
+        function addProduct() {
+            var productEdit = document.getElementById("product_edit");
+            productEdit.style.display = "block";
+
+            document.getElementById("product_name").value = "";
+            document.getElementById("product_price").value = "";
+            document.getElementById("product_url").value = "";
+            document.getElementById("product_description").value = "";
+
+            var saveButton = document.getElementById("save_product_btn");
+            saveButton.setAttribute("data-index", "new");
+        }
+
+        function saveProductChanges() {
+            var getProductArr = JSON.parse(localStorage.getItem("productArr")) || [];
+
+            var index = document.getElementById("save_product_btn").getAttribute("data-index");
+
+            if (index === "new") {
+                var newProduct = {
+                    productId: getProductArr.length + 1,
+                    name: document.getElementById("product_name").value,
+                    price: document.getElementById("product_price").value,
+                    image: document.getElementById("product_url").value,
+                    parra: document.getElementById("product_description").value
+                };
+
+                getProductArr.push(newProduct);
+
+                localStorage.setItem("productArr", JSON.stringify(getProductArr));
+
+                closeAdd();
+                location.reload();
+            } else if (index !== null) {
+                index = parseInt(index);
+
+                getProductArr[index].name = document.getElementById("product_name").value;
+                getProductArr[index].price = document.getElementById("product_price").value;
+                getProductArr[index].image = document.getElementById("product_url").value;
+                getProductArr[index].parra = document.getElementById("product_description").value;
+
+                localStorage.setItem("productArr", JSON.stringify(getProductArr));
+
+                closeAdd();
+                location.reload();
+            }
+        }
+
 
     </script>
 </body>
