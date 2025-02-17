@@ -120,34 +120,39 @@
                     CustomerCardInfo: CustomerCard.value
                 };
                 localStorage.setItem("CustomerInfo", JSON.stringify(CustomerInfo));
-            }
 
-            var orderMade;
-            var loggedCustomerObj = JSON.parse(localStorage.getItem("loggedCustomerObj"));
+                var orderMade;
+                var loggedCustomerObj = JSON.parse(localStorage.getItem("loggedCustomerObj"));
 
-            for (var i = 0; i < getProductCartArr.length; i++) {
-                orderMade = {
-                    customerId: loggedCustomerObj.id,
-                    productId: getProductCartArr[i].productID,
-                    price: getProductCartArr[i].price,
-                    quantity: getProductCartArr[i].quantity
+                // if(!loggedCustomerObj){
+                //     var 
+                // }
+
+                for (var i = 0; i < getProductCartArr.length; i++) {
+                    orderMade = {
+                        customerId: loggedCustomerObj.id,
+                        productId: getProductCartArr[i].productID,
+                        price: getProductCartArr[i].price,
+                        quantity: getProductCartArr[i].quantity
+                    }
+
+                    orderArr.push(orderMade);
+                    localStorage.setItem("orderArr", JSON.stringify(orderArr));
                 }
 
-                orderArr.push(orderMade);
-                localStorage.setItem("orderArr", JSON.stringify(orderArr));
+                var CustomerAddBox = document.getElementById("customer_add");
+                CustomerAddBox.style.display = "none";
+
+                Swal.fire({
+                    title: "Your order has been Placed!",
+                    icon: "sucess"
+                });
+
+                getProductCartArr = [];
+                localStorage.setItem("productCartArr", JSON.stringify(getProductCartArr));
+                cartPrint()
             }
 
-            var CustomerAddBox = document.getElementById("customer_add");
-            CustomerAddBox.style.display = "none";
-
-            Swal.fire({
-                title: "Your order has been Placed!",
-                icon: "sucess"
-            });
-
-            getProductCartArr = [];
-            localStorage.setItem("productCartArr", JSON.stringify(getProductCartArr));
-            cartPrint()
         }
 
         function closeAdd() {

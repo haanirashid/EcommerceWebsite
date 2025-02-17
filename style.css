@@ -967,3 +967,22 @@ margin-bottom: 15px;
     font-size: 18px;
     color: #222831;
 }
+
+/* Profile Page Css End */
+
+/* Sales Page Css  */
+
+.sub_dash .right .sub_header{
+    padding: 15px;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sub_dash .right .sub_header h1{
+    font-size: 32px;
+    color: #222831;
+    text-decoration:  underline #FBF8EF;
+}

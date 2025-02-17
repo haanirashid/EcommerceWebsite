@@ -90,6 +90,10 @@ var customerArr = [
         statuss: "customer"
     }
 ];
+// localStorage.setItem("employeeArr", JSON.stringify(employeeArr));
+// localStorage.setItem("managerArr", JSON.stringify(managerArr));
+// localStorage.setItem("partnerArr", JSON.stringify(partnerArr));
+// localStorage.setItem("customerArr", JSON.stringify(customerArr));
 var idCount = 7;
 
 var obj;
@@ -176,6 +180,9 @@ const employeeSign = (event) => {
 
 const customerSign = (event) => {
     event.preventDefault();
+    localStorage.setItem("customerArr", JSON.stringify(customerArr)); 
+    var getCustomerArr = JSON.parse(localStorage.getItem("customerArr"));
+    
 
     var customerSignName = document.getElementById("customer_sign_name");
     var customerSignEmail = document.getElementById("customer_sign_email");
@@ -190,10 +197,8 @@ const customerSign = (event) => {
         pass: customerSignPass.value,
         statuss: "customer"
     }
-    customerArr.push(obj);
-    localStorage.setItem("customerArr", JSON.stringify(customerArr));
-    console.log("customer sign in working");
-
+    getCustomerArr.push(obj);
+    localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
     signAlertTarget.innerHTML =
         `
            <div class="sign_alert_target">
@@ -221,7 +226,8 @@ const loginFunc = (event) => {
     if (loginEmployeeStatus.checked) {
         for (var i = 0; i < getEmployeeArr.length; i++) {
             if (loginEmail.value === getEmployeeArr[i].email && loginPass.value === getEmployeeArr[i].pass) {
-                console.log(getEmployeeArr[i]);
+                var loggedCustomerObj = getEmployeeArr[i];
+                localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getEmployeeArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getEmployeeArr[i].statuss);
                 if (getLoginStatusValue === "false") {
@@ -233,8 +239,8 @@ const loginFunc = (event) => {
         }
         for (var i = 0; i < getManagerArr.length; i++) {
             if (loginEmail.value === getManagerArr[i].email && loginPass.value === getManagerArr[i].pass) {
-                console.log(getManagerArr[i]);
-                console.log("logged in as Manager");
+                var loggedCustomerObj = getManagerArr[i];
+                localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getManagerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getManagerArr[i].statuss);
                 if (getLoginStatusValue === "false") {
@@ -247,7 +253,8 @@ const loginFunc = (event) => {
         }
         for (var i = 0; i < getPartnerArr.length; i++) {
             if (loginEmail.value === getPartnerArr[i].email && loginPass.value === getPartnerArr[i].pass) {
-                console.log(getPartnerArr[i]);
+                var loggedCustomerObj = getPartnerArr[i];
+                localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getPartnerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getPartnerArr[i].statuss);
                 if (getLoginStatusValue === "false") {

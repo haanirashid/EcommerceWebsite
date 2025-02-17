@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+        integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <div class="main_dash">
+        <div class="nav_dash">
+            <h1>Hats Paradise</h1>
+        </div>
+        <div class="welcome_dash" id="dash_welcome_target">
+        </div>
+        <div class="sub_dash">
+            <div class="left">
+                <div class="left_div"><button onclick="visit('./dashboard.html')">Employees</button></div>
+                <div class="left_div"><button onclick="visit('./dashboard.html')">Customers</button></div>
+                <div class="left_div"><button onclick="visit('./dashboard.html')">Products</button></div>
+                <div class="left_div"><button onclick="visit('./sales.html')">Sales</button></div>
+                <div class="left_div"><button onclick="visit('./website.html')">Visit Website</button></div>
+                <div class="left_div"><button onclick="signOutFunc()">Sign Out</button></div>
+            </div>
+            <div class="right">
+                <div class="sub_header">
+                    <h1>Customers</h1>
+                </div>
+                <table id="customer_target">
+                    <tr>
+                        <th>Customer ID</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>View Profile</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        var getLoggedEmployeeName = localStorage.getItem("loggedEmployeeName");
+        var getLoggedEmployeeStatus = localStorage.getItem("loggedEmployeeStatus");
+        var dashWelcomeTarget = document.getElementById("dash_welcome_target");
+        dashWelcomeTarget.innerHTML =
+            `
+            <h2>Welcome, ${getLoggedEmployeeName}</h2>
+            `;
+
+        const visit = (destination) => {
+            window.location.href = destination;
+        }
+
+        const signOutFunc = () => {
+            localStorage.clear();
+            window.location.href = "./index.html";
+        }
+        var cusDiv;
+        var getCustomerArr = JSON.parse(localStorage.getItem("customerArr"));
+        var customerTarget = document.getElementById("customer_target");
+        console.log(getCustomerArr);
+        getCustomerArr.forEach((value)=>{
+            cusdiv = 
+            `
+            <tr>
+                        <td>${value.id}</td>
+                        <td>${value.fullName}</td>
+                        <td>${value.email}</td>
+                        <td>${value.statuss}</td>
+                        <td><button>View Profile</button></td>
+            </tr>
+            `;
+            customerTarget.innerHTML += cusdiv
+        })
+        
+    </script>
+</body>
+
+</html>

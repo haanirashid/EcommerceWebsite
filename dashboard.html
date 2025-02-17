@@ -14,12 +14,14 @@
             <h1>Hats Paradise</h1>
         </div>
         <div class="welcome_dash" id="dash_welcome_target">
-            <h2>Welcome, Hani Rashid</h2>
         </div>
         <div class="sub_dash">
             <div class="left">
-                <div class="left_div"><button>Sales</button></div>
-                <div class="left_div"><button onclick="visitWebsite()">Visit Website</button></div>
+                <div class="left_div"><button onclick="visit('./dashboard.html')">Employees</button></div>
+                <div class="left_div"><button onclick="visit('./customer.html')">Customers</button></div>
+                <div class="left_div"><button onclick="visit('./product.html')">Products</button></div>
+                <div class="left_div"><button onclick="visit('./sales.html')">Sales</button></div>
+                <div class="left_div"><button onclick="visit('./website.html')">Visit Website</button></div>
                 <div class="left_div"><button onclick="signOutFunc()">Sign Out</button></div>
             </div>
             <div class="right">
@@ -31,18 +33,10 @@
                         <th>Status</th>
                         <th>View Profile</th>
                     </tr>
-                    <!-- <tr>
-                        <td>01</td>
-                        <td>Hani Rashid</td>
-                        <td>hani@gmail.com</td>
-                        <td>Employee</td>
-                        <td><button>View Profile</button></td>
-                    </tr> -->
                 </table>
             </div>
         </div>
     </div>
-    <!-- <script src="app.js"></script> -->
     <script>
         var getLoggedEmployeeName = localStorage.getItem("loggedEmployeeName");
         var getLoggedEmployeeStatus = localStorage.getItem("loggedEmployeeStatus");
@@ -68,7 +62,7 @@
                         <td>${getEmployeeArr[i].email}</td>
                         <td>Employee</td>
                         <td><button>View Profile</button></td>
-                    </tr>
+                </tr>
                 `
             }
         }
@@ -142,8 +136,8 @@
             window.location.href = "./index.html";
         }
 
-        const visitWebsite = ()=>{
-            window.location.href = "./website.html";
+        const visit = (destination)=>{
+            window.location.href = destination;
         }
 
     </script>
