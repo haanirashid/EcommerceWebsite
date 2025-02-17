@@ -892,3 +892,78 @@ margin-bottom: 15px;
     font-weight: 800;
     color: #F96E2A;
 }
+
+
+/* Customer Profile Page */
+
+.main_profile{
+    width: 100%;
+    height: auto;
+}
+
+.main_profile .sub_header{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C9E6F0;
+    border-bottom: 2px solid #F96E2A;
+}
+
+.main_profile .sub_header h1{
+    font-size: 32px;
+    font-weight: 800;
+    color: #F96E2A;
+}
+
+.main_profile .profile_target,
+.main_profile .user_info_target{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_target .user_profile,
+.user_info_target .user_add_info{
+    margin-top: 40px;
+    width: 70%;
+    height: auto;
+    border: 2px solid #F96E2A;
+    background-color: #C9E6F0;
+}
+
+.user_profile table,
+.user_add_info table{
+    width: 100%;
+    height: auto;
+    border-collapse: collapse;
+}
+
+.user_profile table tr,
+.user_add_info table tr{
+    width: 100%;
+    height: 60px;
+    border: 2px solid whitesmoke;
+}
+
+.user_profile table tr th,
+.user_profile table tr td,
+.user_add_info table tr th,
+.user_add_info table tr td{
+    width: 50%;   
+    text-align: center;
+}
+
+.user_profile table tr th,
+.user_add_info table tr th{
+    font-size: 22px;
+    color: #F96E2A;
+}
+.user_profile table tr td,
+.user_add_info table tr td{
+    font-size: 18px;
+    color: #222831;
+}

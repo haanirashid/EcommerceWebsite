@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +10,94 @@
         integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
     <div class="main_profile">
-
+        <div class="nav_web">
+            <div class="title">
+                <h1>Hats Paradise</h1>
+            </div>
+            <div class="list">
+                <ul>
+                    <li><a href="./website.html">Home Page</a></li>
+                    <li><a href="./profile.html">Profile</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="./index.html">Sign Out</a></li>
+                    <li><a href="./cart.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="sub_header">
+            <h1>User Profile</h1>
+        </div>
+        <div id="profile_target" class="profile_target"></div>
+        <div id="user_info_target" class="user_info_target">
+            <!-- <div class="user_add_info">
+                <table>
+                    <tr>
+                        <th>Address</th>
+                        <td>Karachi,Sindh</td>
+                    </tr>
+                    <tr>
+                        <th>Credit/Debit Card</th>
+                        <td>1234576890</td>
+                    </tr>
+                </table>
+            </div> -->
+        </div>
     </div>
-    <script src="app.js"></script>
+    <script>
+        var getCustomerProfile = JSON.parse(localStorage.getItem("loggedCustomerObj"));
+        var userProfile;
+        var profileTarget = document.getElementById("profile_target");
+        profileTarget.innerHTML = "";
+        userProfile =
+            `
+                    <div class="user_profile">
+                <table>
+                    <tr>
+                        <th>Status</th>
+                        <td>${getCustomerProfile.statuss}</td>
+                    </tr>
+                    <tr>
+                        <th>Full Name</th>
+                        <td>${getCustomerProfile.fullName}</td>
+                    </tr>
+                    <tr>
+                        <th>User ID</th>
+                        <td>${getCustomerProfile.id}</td>
+                    </tr>
+                    <tr>
+                        <th>Email ID</th>
+                        <td>${getCustomerProfile.email}</td>
+                    </tr>
+                </table>
+            </div>
+        `;
+        profileTarget.innerHTML = userProfile;
+
+        var getUserInfo = JSON.parse(localStorage.getItem("CustomerInfo"));
+        var userInfoDiv;
+        var userInfoTarget = document.getElementById("user_info_target");
+        userInfoTarget.innerHTML = "";
+        userInfoDiv =
+            `
+            <div class="user_add_info">
+                <table>
+                    <tr>
+                        <th>Address</th>
+                        <td>${getUserInfo.customerAddressInfo}</td>
+                    </tr>
+                    <tr>
+                        <th>Credit/Debit Card</th>
+                        <td>${getUserInfo.CustomerCardInfo}</td>
+                    </tr>
+                </table>
+            </div>
+        `;
+        userInfoTarget.innerHTML = userInfoDiv;
+
+    </script>
 </body>
+
 </html>
