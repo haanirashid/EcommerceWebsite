@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cart</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -17,7 +18,7 @@
             <div class="list">
                 <ul>
                     <li><a href="./website.html">Home Page</a></li>
-                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Profile</a></li>
                     <li><a href="#">Contact Us</a></li>
                     <li><a href="./index.html">Sign Out</a></li>
                     <li><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
@@ -25,6 +26,13 @@
             </div>
         </div>
         <div id="cart_target" class="main_cart"></div>
+        <div class="customer_info" id="customer_add">
+            <span class="close_button" onclick="closeAdd()">X</span>
+            <h2>Enter Additional Information</h2>
+            <input type="text" id="customer_address" placeholder="Enter Complete Address">
+            <input type="text" id="customer_card" placeholder="Enter Your Credit/Debit Card">
+            <button onclick="customerAddress()">Submit</button>
+        </div>
         <div class="cart_order_button"><button onclick="placeOrder()">Place Order</button></div>
     </div>
     <script>
@@ -62,7 +70,57 @@
 
         var orderArr = JSON.parse(localStorage.getItem("orderArr")) || [];
         localStorage.setItem("orderArr", JSON.stringify(orderArr))
+
         const placeOrder = () => {
+            var getCustomerInfo = JSON.parse(localStorage.getItem("CustomerInfo"));
+
+            if (getCustomerInfo) {
+                var orderMade;
+                var loggedCustomerObj = JSON.parse(localStorage.getItem("loggedCustomerObj"));
+
+                for (var i = 0; i < getProductCartArr.length; i++) {
+                    orderMade = {
+                        customerId: loggedCustomerObj.id,
+                        productId: getProductCartArr[i].productID,
+                        price: getProductCartArr[i].price,
+                        quantity: getProductCartArr[i].quantity
+                    }
+
+                    orderArr.push(orderMade);
+                    localStorage.setItem("orderArr", JSON.stringify(orderArr));
+
+                }
+
+                Swal.fire({
+                    title: "Your order has been Placed!",
+                    icon: "sucess"
+                });
+
+                getProductCartArr = [];
+                localStorage.setItem("productCartArr", JSON.stringify(getProductCartArr));
+                cartPrint()
+
+            } else {
+
+                var CustomerAddBox = document.getElementById("customer_add");
+                CustomerAddBox.style.display = "block";
+            }
+
+        }
+
+        function customerAddress() {
+
+            var CustomerAddress = document.getElementById("customer_address");
+            var CustomerCard = document.getElementById("customer_card");
+            var CustomerInfo;
+
+            if (CustomerAddress.value !== "" && CustomerCard.value !== "") {
+                CustomerInfo = {
+                    customerAddressInfo: CustomerAddress.value,
+                    CustomerCardInfo: CustomerCard.value
+                };
+                localStorage.setItem("CustomerInfo", JSON.stringify(CustomerInfo));
+            }
 
             var orderMade;
             var loggedCustomerObj = JSON.parse(localStorage.getItem("loggedCustomerObj"));
@@ -74,11 +132,27 @@
                     price: getProductCartArr[i].price,
                     quantity: getProductCartArr[i].quantity
                 }
-                
+
                 orderArr.push(orderMade);
-                localStorage.setItem("orderArr",JSON.stringify(orderArr));
+                localStorage.setItem("orderArr", JSON.stringify(orderArr));
             }
-            alert("your order has been placed!")
+
+            var CustomerAddBox = document.getElementById("customer_add");
+            CustomerAddBox.style.display = "none";
+
+            Swal.fire({
+                title: "Your order has been Placed!",
+                icon: "sucess"
+            });
+
+            getProductCartArr = [];
+            localStorage.setItem("productCartArr", JSON.stringify(getProductCartArr));
+            cartPrint()
+        }
+
+        function closeAdd() {
+            var CustomerAddBox = document.getElementById("customer_add");
+            CustomerAddBox.style.display = "none";
         }
 
     </script>

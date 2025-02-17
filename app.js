@@ -15,20 +15,20 @@ const radioFuc = (event) => {
     }
 }
 
-function verifyEmployee(){
+function verifyEmployee() {
     var verificationInput = document.getElementById("verification_code");
-    if(verificationInput.value === "12345"){
+    if (verificationInput.value === "12345") {
         window.location.href = "employeeSignin.html"
-    }else{
+    } else {
         Swal.fire({
             icon: "error",
             title: "Oops...",
             text: "Verification code incorrect, Try Again",
-          });
+        });
     }
 }
 
-function closeVerify(){
+function closeVerify() {
     var verificationBox = document.getElementById("employeeVerify");
     verificationBox.style.display = "none";
 };
@@ -260,13 +260,15 @@ const loginFunc = (event) => {
     }
     if (loginCustomerStatus.checked) {
         for (var i = 0; i < getCustomerArr.length; i++) {
-            var loggedCustomerObj = getCustomerArr[i];
-            localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
-            if (getLoginStatusValue === "false") {
-                localStorage.setItem("loginStatus", true);
+            if (loginEmail.value === getCustomerArr[i].email && loginPass.value === getCustomerArr[i].pass) {
+                var loggedCustomerObj = getCustomerArr[i];
+                localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
+                if (getLoginStatusValue === "false") {
+                    localStorage.setItem("loginStatus", true);
+                }
+                window.location.href = "./website.html";
+                return;
             }
-            window.location.href = "./website.html";
-            return;
         };
     }
 }
@@ -411,25 +413,34 @@ const addToCart = (index) => {
     var quantityCount = parseInt(quantityElement.innerHTML);
 
     if (quantityCount <= 0) {
-        alert("Please Add Quantity to product")
+        Swal.fire({
+            title: "Product is not added to your cart!",
+            icon: "error"
+          });
         return;
     }
 
     if (getLoginStatus === "true") {
         var orderMade = {
-            productID : productProfile.productId,
-            name : productProfile.name,
-            image : productProfile.image,
-            parra : productProfile.parra,
-            price : productProfile.price,
+            productID: productProfile.productId,
+            name: productProfile.name,
+            image: productProfile.image,
+            parra: productProfile.parra,
+            price: productProfile.price,
             quantity: quantityCount
         }
         productCartArr.push(orderMade);
         localStorage.setItem("productCartArr", JSON.stringify(productCartArr));
-        alert("product is added to your cart!")
+        Swal.fire({
+            title: "Product is added to your cart!",
+            icon: "success"
+          });
     }
     else if (getLoginStatus === false) {
-        alert("user is not logged in!");
+        Swal.fire({
+            title: "Please Login First!",
+            icon: "error"
+          });
         window.location.href = "./customerSignin.html";
     }
 }
