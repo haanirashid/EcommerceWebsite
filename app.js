@@ -90,10 +90,6 @@ var customerArr = [
         statuss: "customer"
     }
 ];
-// localStorage.setItem("employeeArr", JSON.stringify(employeeArr));
-// localStorage.setItem("managerArr", JSON.stringify(managerArr));
-// localStorage.setItem("partnerArr", JSON.stringify(partnerArr));
-// localStorage.setItem("customerArr", JSON.stringify(customerArr));
 var idCount = 7;
 
 var obj;
@@ -230,7 +226,7 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getEmployeeArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getEmployeeArr[i].statuss);
-                localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
+                localStorage.setItem("customerArr", JSON.stringify(customerArr));
                 localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
@@ -250,7 +246,7 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getManagerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getManagerArr[i].statuss);
-                localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
+                localStorage.setItem("customerArr", JSON.stringify(customerArr));
                 localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
@@ -271,7 +267,7 @@ const loginFunc = (event) => {
                 localStorage.setItem("loggedCustomerObj", JSON.stringify(loggedCustomerObj));
                 localStorage.setItem("loggedEmployeeName", getPartnerArr[i].fullName);
                 localStorage.setItem("loggedEmployeeStatus", getPartnerArr[i].statuss);
-                localStorage.setItem("customerArr", JSON.stringify(getCustomerArr));
+                localStorage.setItem("customerArr", JSON.stringify(customerArr));
                 localStorage.setItem("productArr", JSON.stringify(productsArr));
                 if (getLoginStatusValue === "false") {
                     localStorage.setItem("loginStatus", true);
